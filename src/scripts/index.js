@@ -1,3 +1,6 @@
+// import { aData } from "../scripts/database";
+// import { registerContact } from "./register";
+
 const aData = [
 	{
 		codigo: "001001",
@@ -25,28 +28,82 @@ const aData = [
 	},
 ];
 
-const contacts = document.getElementById("contacts");
-// const teste = document.createElement("h1");
-// teste.innerText = "teste";
-// contacts.appendChild(teste);
+const listContacts = document.getElementById("listContacts");
 
-const lastContact = aData[aData.length - 1];
+const render = (arr) => {
+	arr.forEach((contact) => {
+		const ul = document.createElement("ul");
+		ul.classList.add("contactCard");
 
-aData.forEach((contact) => {
-	const ul = document.createElement("ul");
-	ul.classList.add("contactCard");
+		for (let key in contact) {
+			const li = document.createElement("li");
+			li.innerText = `${key.charAt(0).toUpperCase() + key.substring(1)}: ${
+				contact[key]
+			}`;
 
-	// for (let i = 1; i < 4; i++){
-	//   const li = document.createElement("li");
-	//   li.innerText = `Código: ${}`
-	// }
-	for (let key in contact) {
-		const li = document.createElement("li");
-		li.innerText = `${key.charAt(0).toUpperCase() + key.substring(1)}: ${
-			contact[key]
-		}`;
-		ul.appendChild(li);
+			ul.appendChild(li);
+		}
+
+		listContacts.appendChild(ul);
+	});
+};
+
+const gerarCodigo = () => {
+	let maxCodigo = 0;
+
+	aData.forEach((contact) => {
+		if (contact.codigo > maxCodigo) {
+			maxCodigo = contact.codigo;
+		}
+	});
+
+	return "00" + String(Number(maxCodigo) + 1);
+};
+
+const addContact = (contact) => {
+	const newCod = gerarCodigo();
+	contacts.push({ codigo: newCod, ...contact });
+};
+
+const formContact = document.getElementById("formContact");
+
+const registerContact = (arr) => {
+	const inputs = document.querySelectorAll(".registerInput");
+	let emptyInput = 0;
+
+	const newContact = {};
+
+	inputs.forEach((input) => {
+		if (input.value === "") {
+			emptyInput++;
+		}
+
+		newContact[input.name] = input.value;
+	});
+
+	if (emptyInput !== 0) {
+		alert("Preencha todos os campos");
 	}
 
-	contacts.appendChild(ul);
-});
+	newContact.telefone = `(${newContact.telefone.slice(
+		0,
+		2
+	)}) ${newContact.telefone.slice(2, 7)}-${newContact.telefone.slice(7, 11)}`;
+
+	arr.push({ codigo: gerarCodigo(), ...newContact });
+};
+
+const registerEvent = (arr) => {
+	const submitButton = document.getElementById("register");
+
+	submitButton.addEventListener("click", (event) => {
+		event.preventDefault();
+
+		listContacts.innerHTML = "";
+		registerContact(arr);
+		render(arr);
+	});
+};
+
+render(aData);
+registerEvent(aData);

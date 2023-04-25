@@ -12,24 +12,24 @@
   <header>
     <h1>Lista de contatos</h1>
   </header>
-  <div id="contacts">
+  <div id="listContacts">
   </div>
-  <form>
+  <form id="formContact">
     <h2>Cadastrar contato</h2>
     <div>
       <span>Nome</span>
-      <input type="text">
+      <input class="registerInput" name="nome" type="text">
     </div>
     <div>
       <span>Email</span>
-      <input type="email">
+      <input class="registerInput" name="email" type="email">
     </div>
     <div>
       <span>Telefone</span>
-      <input type="text">
+      <input class="registerInput" name="telefone" type="text">
     </div>
-    <button>Cadastrar</button>
+    <button type='submit' id="register">Cadastrar</button>
   </form>
-  <script src="../src/scripts/index.js"></script>
+  <script type="Module" src="../src/scripts/index.js"></script>
 </body>
 </html>
