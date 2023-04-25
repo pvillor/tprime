@@ -1,3 +1,114 @@
+body {
+  background: #111111;
+  color: white;
+  height: 100vh;
+}
+
+header {
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #72D091;
+}
+
+#listContacts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-content: space-around;
+  min-height: 60vh;
+}
+
 .contactCard {
   list-style-type: none;
+  display: grid;
+  justify-items: center;
+  padding: 10px;
+  background: #191A19;
+  min-height: 100px;
+  color: #72D091;
+  box-shadow: -2px 3px 0px -1px rgba(120,242,124,0.75);
+  -webkit-box-shadow: -2px 3px 0px -1px rgba(120,242,124,0.75);
+  -moz-box-shadow: -2px 3px 0px -1px rgba(120,242,124,0.75);
+  border-radius: 10px;
+}
+
+#formContact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  min-height: 300px;
+  margin-top: 20px;
+  border-top: 1px solid #72D091;
+}
+
+#containerInputs {
+  min-height: 100px;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.containerInput {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.registerInput {
+  padding: 3px;
+  font-size: 15px;
+  border-width: 1px;
+  border-color: #CCCCCC;
+  background-color: #FFFFFF;
+  color: #000000;
+  border-style: solid;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+  text-shadow: 0px 0px 5px rgba(66,66,66,.75);
+}
+
+#register {
+  font-size:15px;
+  font-family:Arial;
+  width:140px;
+  height:50px;
+  border-width:1px;
+  color:#fff;
+  border-color:#18ab29;
+  font-weight:bold;
+  border-top-left-radius:28px;
+  border-top-right-radius:28px;
+  border-bottom-left-radius:28px;
+  border-bottom-right-radius:28px;
+  text-shadow: 1px 1px 0px #2f6627;
+  background:#44c767;
+}
+
+#register:hover {
+  background: #18ab29;
+  cursor: pointer;
+}
+
+.nome {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.email {
+  font-weight: 100;
+  margin-bottom: 2px;
+}
+
+.telefone {
+  font-weight: 100;
+  margin-bottom: 5px;
+}
+
+.codigo {
+  font-size: 10px;
 }
